@@ -8,7 +8,7 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 
-### `$yarn test`
+### `$ yarn test`
 
 Launches the test runner in the interactive watch mode.\
 
