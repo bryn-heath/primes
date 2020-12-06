@@ -4,15 +4,15 @@
 
 In the project directory, you can run:
 
-### `yarn start`
+### `$ yarn start`
 
 Runs the app in the development mode.\
 
-### `yarn test`
+### `$yarn test`
 
 Launches the test runner in the interactive watch mode.\
 
-### `to do (with more time)`
+### `To do (with more time)`
 
 - refactor easier to read code, more es6 syntax
 - improve the test e2e (simulate N as 3, we render a grid of 16)
@@ -20,9 +20,9 @@ Launches the test runner in the interactive watch mode.\
 
 ### `Happy with`
 
-I happy with the overall simplicity (we can always refactor)
-Works well as a small app (this test didn't really need branches or extra components)
-My solution achieves a few results, for example a function that returns multi dimensional array but it also used to render the grid.
+I happy with the overall simplicity (we can always refactor).\
+Works well as a small app (this test didn't really need branches or extra components).\
+My solution achieves a few results, for example a function that returns multi dimensional array but it also used to render the grid.\
 
 ### 'Thanks'
 
