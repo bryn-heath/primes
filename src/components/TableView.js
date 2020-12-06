@@ -8,8 +8,9 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'arial',
   },
   paper: {
-    width: 30,
+    width: 32,
     padding: 4,
+    height: 16,
     textAlign: 'center',
     color: theme.palette.text.primary,
   },
@@ -33,15 +34,23 @@ const TableView = ({ inputNumber, tableArray }) => {
         <Grid key={i} item xs={'auto'}>
           <Paper className={classes.paper}>{tableArrayFlat[i]}</Paper>
         </Grid>
-      );
+      ); //this part builds a row
 
       if ((1 + i) % (inputNumber + 1) === 0) {
         finalBuild.push(
-          <Grid container item xs={'auto'} spacing={2} direction={'row'}>
+          <Grid
+            container
+            item
+            xs={'auto'}
+            spacing={2}
+            direction={'row'}
+            id="gridRow"
+            key={i * i}
+          >
             {eachRow.map((ea) => ea)}
           </Grid>
-        );
-        eachRow = [];
+        ); //this part checks if the loop is at the end of a row - then push that row onto the grid
+        eachRow = []; //reset for each row
       }
     }
 

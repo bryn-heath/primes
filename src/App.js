@@ -4,13 +4,10 @@ import TableView from './components/TableView';
 
 const useStyles = makeStyles(() => ({
   mainContainer: {
-    margin: 'auto',
-    height: '60vh',
-    width: '90vw',
+    padding: 10,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    transform: `translate(${0}, ${25}%)`,
   },
   containerLeft: {
     fontSize: 15,
@@ -18,75 +15,83 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'center',
     flexDirection: 'column',
     fontFamily: 'Roboto',
-    width: '20vw',
-    padding: 25,
+    width: '5vw',
+    padding: 20,
   },
   containerRight: {
-    transform: `translate(${0}, ${0}%)`,
     fontSize: 15,
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
     alignItems: 'center',
     fontFamily: 'Roboto',
-    width: '80vw',
-    padding: 25,
   },
 }));
 
+export const isPrime = (num) => {
+  for (let i = 2; i < num; i++) if (num % i === 0) return false;
+  return num > 1;
+}; // helper function, check num === prime number
+
+export const buildPrimes = (num) => {
+  let arr = [0];
+  let i = 0;
+
+  do {
+    if (isPrime(i)) {
+      arr.push(i);
+    }
+    i++;
+  } while (arr.length < num + 1);
+  return arr;
+}; // func build the foundation array of prime numbers for the top row (X)
+
+export const buildAllArrays = (array, inputNumber) => {
+  let setArray = [];
+  for (let r = 0; setArray.length < inputNumber + 1; r++) {
+    let eachArr = [];
+    for (let c = 0; eachArr.length < inputNumber + 1; c++) {
+      if (r === 0) {
+        eachArr.push(1 * array[c]);
+      } else {
+        eachArr.push(array[r] * array[c]);
+      }
+      eachArr[0] = array[r];
+    }
+    setArray.push(eachArr);
+  }
+
+  if (setArray.length > 0) {
+    setArray[0][0] = ' ';
+    return setArray;
+  }
+
+  return setArray;
+}; // func to build out the prime numbers X * Y
+
 const App = () => {
   const classes = useStyles();
-  const [inputNumber, setInputNumber] = useState();
-
-  const isPrime = (num) => {
-    for (let i = 2; i < num; i++) if (num % i === 0) return false;
-    return num > 1;
-  }; // helper function, check num === prime number
-
-  const buildPrimes = (num) => {
-    let arr = [0];
-    let i = 0;
-
-    do {
-      if (isPrime(i)) {
-        arr.push(i);
-      }
-      i++;
-    } while (arr.length < num + 1);
-    return arr;
-  }; // func build the foundation array of prime numbers for the top row (X)
+  const [inputNumber, setInputNumber] = useState(0);
 
   const initPrimeArray = buildPrimes(inputNumber);
 
-  const buildAllArrays = (array) => {
-    let setArray = [];
-    for (let r = 0; setArray.length < inputNumber + 1; r++) {
-      let eachArr = [];
-      for (let c = 0; eachArr.length < inputNumber + 1; c++) {
-        if (r === 0) {
-          eachArr.push(1 * array[c]);
-        } else {
-          eachArr.push(array[r] * array[c]);
-        }
-        eachArr[0] = array[r];
-      }
-      setArray.push(eachArr);
-    }
-    return setArray;
-  }; // func to build out the prime numbers X * Y
-
-  const tableArray = buildAllArrays(initPrimeArray);
+  const tableArray = buildAllArrays(initPrimeArray, inputNumber);
 
   const handleInput = (e) => {
     !isNaN(e.nativeEvent?.data) &&
       setInputNumber(parseInt(e.currentTarget.value));
-  }; //check each input is !NaN - we only want 0-9
+  };
+  //check each input is !NaN - we only want 0-9
 
   return (
-    <div className={classes.mainContainer}>
+    <div className={classes.mainContainer} data-testid="appTest">
       <div className={classes.containerLeft}>
-        <p>Type N below</p>
+        <p style={{ fontWeight: 'bold', fontFamily: 'sans-serif' }}>
+          Type N below
+        </p>
         <input
+          role="userInput"
+          id="inputNID"
           type="text"
           value={inputNumber}
           onChange={handleInput}
