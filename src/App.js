@@ -70,6 +70,7 @@ export const buildAllArrays = (array, inputNumber) => {
 }; // func to build out the prime numbers X * Y
 
 const App = () => {
+  const role = 'userInput';
   const classes = useStyles();
   const [inputNumber, setInputNumber] = useState(0);
 
@@ -90,8 +91,7 @@ const App = () => {
           Type N below
         </p>
         <input
-          role="userInput"
-          id="inputNID"
+          role={role}
           type="text"
           value={inputNumber}
           onChange={handleInput}
