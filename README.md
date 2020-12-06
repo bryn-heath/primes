@@ -18,7 +18,7 @@ Launches the test runner in the interactive watch mode.\
 - improve the test e2e (simulate N as 3, we render a grid of 16)
 - look into performance, for example N=60 takes 4.3s to render (profiler - WithStyles)
 
-### 'Happy with'
+### `Happy with`
 
 I happy with the overall simplicity (we can always refactor)
 Works well as a small app (this test didn't really need branches or extra components)
