@@ -22,7 +22,7 @@ Launches the test runner in the interactive watch mode.\
 
 I happy with the overall simplicity (we can always refactor).\
 Works well as a small app (this test didn't really need branches or extra components).\
-My solution achieves a few results, for example a function that returns multi dimensional array but it also used to render the grid.\
+My solution achieves a few results, for example a function that returns multi dimensional array but it also used to render the grid.
 
 ### 'Thanks'
 
